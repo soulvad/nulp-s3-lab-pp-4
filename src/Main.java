@@ -29,7 +29,7 @@ public class Main {
 
     private static User createUserByType(Scanner scanner) {
         while (true) {
-            System.out.println("1: Person\n2:Entrepreneur\n3:Company");
+            System.out.println("1:Person\n2:Entrepreneur\n3:Company");
             System.out.print("Оберіть тип користувача: ");
 
             int choiceType = scanner.nextInt();

@@ -11,7 +11,8 @@ public class GenerateTaxReportCommand implements Command {
 
     @Override
     public void execute() {
-
+        user.generateTaxReport();
+        System.out.println("Звіт згенеровано.");
     }
 
     @Override

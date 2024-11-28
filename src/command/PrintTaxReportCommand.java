@@ -11,11 +11,15 @@ public class PrintTaxReportCommand implements Command {
 
     @Override
     public void execute() {
-
+        if (user.getTaxReportTable().getReportTable().isEmpty()) {
+            System.out.println("Звіт не згенеровано. Будь ласка, спочатку згенеруйте звіт.");
+        } else {
+            System.out.println(user.getTaxReportTable().getReportTable());
+        }
     }
 
     @Override
     public String getDescription() {
-        return "Згенерувати звіт";
+        return "Вивести звіт";
     }
 }

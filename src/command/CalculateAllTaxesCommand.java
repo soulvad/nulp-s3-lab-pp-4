@@ -11,7 +11,7 @@ public class CalculateAllTaxesCommand implements Command {
 
     @Override
     public void execute() {
-
+        user.calculateAllTaxes();
     }
 
     @Override

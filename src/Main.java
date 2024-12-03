@@ -3,12 +3,11 @@ import taxation.*;
 import taxation.usertypes.Company;
 import taxation.usertypes.Entrepreneur;
 import taxation.usertypes.Person;
+import static menu.Menu.menu;
 
 import java.util.*;
 
 public class Main {
-    private static boolean exit = false;
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Invoker invoker = new Invoker();
@@ -21,7 +20,7 @@ public class Main {
         commandMap.put(4, new GenerateTaxReportCommand(user));
         commandMap.put(5, new PrintTaxReportCommand(user));
 
-        printMenu(scanner, invoker, commandMap);
+        menu(scanner, invoker, commandMap);
 
         System.out.println("Вихід");
         scanner.close();
@@ -29,7 +28,7 @@ public class Main {
 
     private static User createUserByType(Scanner scanner) {
         while (true) {
-            System.out.println("1:Person\n2:Entrepreneur\n3:Company");
+            System.out.println("1:Фізична особа\n2:Підприємець\n3:Компанія");
             System.out.print("Оберіть тип користувача: ");
 
             int choiceType = scanner.nextInt();
@@ -47,31 +46,6 @@ public class Main {
                     return new Company(name);
                 default:
                     System.out.println("Такого типу користувача не існує!");
-            }
-        }
-    }
-
-    private static void printMenu(Scanner scanner, Invoker invoker, Map<Integer, Command> commandMap) {
-        while (true) {
-            System.out.println("\nМеню:");
-            for (Map.Entry<Integer, Command> entry : commandMap.entrySet()) {
-                System.out.println(entry.getKey() + ": " + entry.getValue().getDescription());
-            }
-            System.out.println("0: Вихід");
-            System.out.print("Виберіть дію: ");
-
-            int choice = scanner.nextInt();
-            scanner.nextLine();
-
-            if (choice == 0) {
-                break;
-            }
-
-            Command command = commandMap.get(choice);
-            if (command != null) {
-                invoker.invoke(command);
-            } else {
-                System.out.println("Такої дії не існує!");
             }
         }
     }
